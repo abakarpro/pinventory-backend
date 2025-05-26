@@ -18,13 +18,16 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(express.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-app.use(
-  cors({
-    origin: ["http://localhost:3000", "https://pinventory-beige.vercel.app"],
-    credentials: true,
-  })
-);
 
+// Ou configuration plus spécifique
+app.use(cors({
+  origin: ["http://localhost:3000", "https://pinventory-beige.vercel.app"],
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH'],
+  credentials: true,  // Allow credentials (cookies, authorization headers, etc.)
+  allowedHeaders: ['Content-Type', 'Authorization']
+}));
+
+// Serve static files from the "uploads" and "Images" directories
 app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 app.use("/Images", express.static(path.join(__dirname, "Images")));
 
