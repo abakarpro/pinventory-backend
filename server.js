@@ -32,7 +32,7 @@ app.use("/api/products", productRoute);
 app.use("/api/contactus", contactRoute);
 
 
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 10000;
 
 //Routes
 app.get("/", (req, res) => {
